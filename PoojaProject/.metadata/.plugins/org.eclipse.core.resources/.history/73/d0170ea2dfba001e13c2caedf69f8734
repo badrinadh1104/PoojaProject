@@ -1,0 +1,28 @@
+package com.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.model.Appointment;
+import com.model.Customer;
+import com.repo.CustomerRepo;
+
+@Service
+public class CustomerService {
+
+	@Autowired
+	public CustomerRepo customerRepo;
+	
+	public Customer AddCustomer(Customer customer) {
+		return customerRepo.save(customer);
+		
+	}
+	
+	public Appointment BookAppointment(int customerId) {
+		Customer customer = customerRepo.findById(customerId).get();
+		if(customer != null) {
+//			Appointment 
+		}
+	}
+
+}

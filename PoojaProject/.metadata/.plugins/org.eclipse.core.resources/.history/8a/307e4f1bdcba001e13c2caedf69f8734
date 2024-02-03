@@ -1,0 +1,103 @@
+package com.model;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Appointment {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String occasion;
+	private LocalDate date;
+	private boolean confirmation;
+	private boolean payment;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="customer_id")
+	private Customer customer_id;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "priest_id")
+	private Priest priest_id;
+
+	public Appointment(String occasion, LocalDate date, boolean confirmation, boolean payment, Customer customer,
+			Priest priest) {
+		super();
+		this.occasion = occasion;
+		this.date = date;
+		this.confirmation = confirmation;
+		this.payment = payment;
+		this.customer = customer;
+		this.priest = priest;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getOccasion() {
+		return occasion;
+	}
+
+	public void setOccasion(String occasion) {
+		this.occasion = occasion;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public boolean isConfirmation() {
+		return confirmation;
+	}
+
+	public void setConfirmation(boolean confirmation) {
+		this.confirmation = confirmation;
+	}
+
+	public boolean isPayment() {
+		return payment;
+	}
+
+	public void setPayment(boolean payment) {
+		this.payment = payment;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Priest getPriest() {
+		return priest;
+	}
+
+	public void setPriest(Priest priest) {
+		this.priest = priest;
+	}
+	
+	
+	
+	
+
+}

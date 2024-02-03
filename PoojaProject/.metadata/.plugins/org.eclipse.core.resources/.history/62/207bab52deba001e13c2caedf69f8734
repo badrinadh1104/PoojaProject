@@ -1,0 +1,19 @@
+package com.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.model.Appointment;
+import com.repo.AppointmentRepo;
+
+@Service
+public class AppointmentService {
+	
+	@Autowired
+	public AppointmentRepo appointmentRepo;
+	
+	public Appointment addAppointment(Appointment appointment) {
+		return appointmentRepo.save(appointment);
+	}
+
+}
